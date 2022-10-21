@@ -1,10 +1,7 @@
 package com.example.demospringboot.controller;
 
 import com.example.demospringboot.model.Student;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -15,7 +12,7 @@ public class StudentCRUDController {
 
 
     // C-CREATE OR ADD
-    @RequestMapping("/add_std")
+    @RequestMapping(value = "/add_std" , method = RequestMethod.POST)
     public String add(){
 
         Student student= new Student("Rahul",21,"CS");
@@ -26,7 +23,7 @@ public class StudentCRUDController {
 
     //READ or GET
 
-    @RequestMapping("/students")
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
     public ArrayList<Student> getStudentArrayList(){
 
         return studentArrayList;
@@ -34,7 +31,7 @@ public class StudentCRUDController {
 
     //UPDATE
 
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public String update(@RequestParam int index,@RequestParam String name){
 
        Student student= studentArrayList.get(index);
@@ -44,7 +41,7 @@ public class StudentCRUDController {
     }
 
     //DELETE
-    @RequestMapping("/remove/{index}")
+    @RequestMapping(value = "/remove/{index}", method = RequestMethod.DELETE)
     public String remove(@PathVariable int index){
 
         studentArrayList.remove(index);
