@@ -13,9 +13,8 @@ public class StudentCRUDController {
 
     // C-CREATE OR ADD
     @RequestMapping(value = "/add_std" , method = RequestMethod.POST)
-    public String add(){
+    public String add(@RequestBody Student student){
 
-        Student student= new Student("Rahul",21,"CS");
         studentArrayList.add(student);
 
         return "Successfully Added Student ";
